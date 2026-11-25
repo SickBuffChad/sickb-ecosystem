@@ -81,23 +81,24 @@ SickB Chain (Layer 3, chain ID 5016)
 | **ChadBot** | V3 capabilities implemented; operational integrations vary | Community history and memory, web research, read-only chain and bridge knowledge |
 | **Explorer and governance** | Explorer live; governance evolving | Chain transparency now, greater community stewardship as a future goal |
 
-### 1. Baht Bus Bridge: infrastructure, not a third-party widget
+### 1. Baht Bus Bridge: SickB's native bridge to Ethereum
 
-The bridge was **engineered for SickB** rather than added as a front end to an existing third-party bridge. Its architecture includes:
+**SickB is the blockchain. Baht Bus is the bridge we engineered to serve it.** Rather than rely on an external interoperability provider, we built an Ethereum ↔ SickB asset bridge as part of the chain's own infrastructure.
 
-- Ethereum L1 lockbox contracts and L3 asset minting and withdrawal contracts.
-- Registry-driven support for **SICKB, WETH and USDC**.
-- Automated verification, reconciliation and safety checks around cross-chain movement.
-- **Sponsored native gas** for supported onboarding, so users can transact after bringing assets to the L3.
-- A route model designed around **1:1 Ethereum collateral backing** of wrapped assets.
-- A configured **0.25% (25-basis-point) mainnet withdrawal fee**, with protocol-owned wrapped fee reserves intended to remain backed by L1 collateral.
-- No intentional fixed aggregate bridge-capacity ceiling; transfers remain subject to route controls, collateral and operational constraints.
+The system was developed and repeatedly tested on our Sepolia-based L3 testnet before mainnet. It has operated with real-asset transfers in **both directions since June 2026**, with SICKB, WETH and USDC supported through a registry-driven design.
 
-Transfers have completed in **tens of seconds in observed cases**, but that is not a guaranteed completion time. A public evidence pack will supply matched receipts and dated backing/reconciliation snapshots rather than rely on marketing claims.
+- **Ethereum → SickB:** canonical assets are locked on Ethereum; authorized L3 finalization combines wrapped-token minting and native **gSICKB** sponsorship in an atomic L3 transaction.
+- **SickB → Ethereum:** a single L3 transaction receives wrapped tokens, burns the net withdrawal amount, and delivers a native gas ticket. If sponsorship fails, the L3 transaction reverts. A separate verifier/attester authorizes the later Ethereum release.
+- **Controls:** verified routes, unique transfer IDs, processed/released checks, reconciliation, and separately operated verification and transaction-submission functions.
+- **Backing and economics:** wrapped assets are designed to remain collateral-backed on Ethereum. Mainnet V2 product configuration specifies a **0.25% withdrawal fee**, with protocol-owned wrapped fee reserves intended to remain backed; live onchain settings are authoritative.
 
-**Public L1 contract:** [UniversalLockBoxL1 on Etherscan](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A).
+**Atomicity applies to the relevant L3 transaction—not to all transactions across Ethereum and SickB simultaneously.** Cross-chain processing and recovery are separate steps. The founder reports approximately five months of successful bidirectional operations, without claiming infallibility or guaranteed timing.
 
-The planned next stage is community/DAO-multisig stewardship of protocol-owned reserves. **That governance transition is not represented as completed.**
+**[Read the Baht Bus engineering architecture, both flows, safety boundaries and design rationale](docs/baht-bus-bridge.md).**
+
+**Public Ethereum-side contract:** [UniversalLockBoxL1 on Etherscan](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A).
+
+Future community/DAO-multisig stewardship of protocol-owned reserves is a roadmap goal, **not an existing governance arrangement**.
 
 ### 2. SickB Vault: remove repeated wallet friction without taking the keys
 
