@@ -14,20 +14,25 @@ The system was developed and exercised through multiple iterations on an Ethereu
 
 ## What it connects
 
+**Two distinct relationships—not an Ethereum → Arbitrum One → SickB asset-bridge route:**
+
 ```text
-Ethereum mainnet (canonical assets and lockbox)
-             │
-             │   Bridge observations / messages / relayers
-             ▼
-Arbitrum One (parent chain)
-             │
-             ▼
-SickB Chain · Arbitrum Orbit AnyTrust L3 · chain ID 5016
-             │
-             ├─ Wrapped supported assets
-             ├─ Native gSICKB gas
-             └─ SickB DEX, Vaults, Social and other applications
+ASSET BRIDGE (Baht Bus)                     ROLLUP / SETTLEMENT PARENT
+----------------------------------          --------------------------------
+Ethereum mainnet (L1)                      Ethereum mainnet (L1)
+  canonical assets and lockbox                 │
+            ⇅                                  ▼
+  bridge events, verification,              Arbitrum One (L2 parent)
+  signed attestations and relayers               │
+            ⇅                                     ▼
+SickB Chain (L3, id 5016)                 SickB Chain (Orbit AnyTrust L3)
+  wrapped assets + native gSICKB                 │
+  DEX / Vaults / Social                          └─ sequencer batches / DA
 ```
+
+**Asset movement is directly between the Ethereum lockbox and SickB's L3 contracts.** Arbitrum One underpins SickB's Orbit parent-chain architecture; it is **not** an intermediate asset-bridge custody or release step in the current mainnet Baht Bus routes.
+
+**Operator-owned infrastructure:** SickB runs its own Ethereum execution client (**Reth**) and consensus client (**Lighthouse**), an **Arbitrum One Nitro node**, its **SickB L3 sequencer**, and an **AnyTrust data-availability committee**. These operate alongside chain-specific bridge processing, auditing and separately operated verification/attestation services. Running these nodes reduces reliance on third-party RPC providers; it does not imply independence from Ethereum or Arbitrum consensus, or that the network is fully decentralized.
 
 The currently supported principal routes are **SICKB, WETH and USDC**. A registry associates their canonical L1 tokens with L3 wrapped assets and governs whether each direction is enabled and within configured limits. Bridge capacity is ultimately constrained by available collateral, enabled routes and operational safeguards, not an advertised unlimited-liquidity guarantee.
 
@@ -37,7 +42,7 @@ The currently supported principal routes are **SICKB, WETH and USDC**. A registr
 
 At the architectural level:
 
-1. The user's supported canonical assets are locked in the Ethereum-side bridge contract.
+1. The user submits the supported canonical asset to the Ethereum-side lockbox using the **mainnet nonpayable, three-argument deposit function**; the normal deposit does **not** attach an ETH bridge surcharge or a paid retryable ticket. The wallet still pays Ethereum transaction gas.
 2. Cross-chain processing identifies the deposit and performs route and transaction checks before authorizing minting on SickB.
 3. The L3 finalization operation delivers the corresponding wrapped asset and, for the gas-sponsored design, delivers a native gas ticket to the SickB wallet.
 
@@ -85,6 +90,10 @@ A cross-chain operation can remain **pending** when a subsequent step is delayed
 **Fee settings are governed by live contract configuration**, so current onchain parameters—not this document—are the authoritative value at transaction time. The potential transfer of protocol-owned reserves to future DAO/multisig stewardship is a **roadmap objective**, not a claim of current DAO custody.
 
 ## Experience and evidence
+
+**Fee clarification:** The historical `0.00375 ETH` deposit-fee setting was an **unimplemented placeholder**, not an Ethereum deposit charge. It must not be counted as realized revenue or included in historical bridge-performance costs.
+
+**Evidence status:** The November 7, 2026 archived activity-feed probe inspected SickB blocks 201,011–300,991 and observed seven L3 withdrawal initiations, with zero deposit mints in that bounded window. These observations are not a full-history inventory and do not independently establish Ethereum releases. The existing activity feed is a useful starting point for a separate read-only, bridge-ID-matched historical dataset.
 
 The founder has operated the bridge for approximately five months since mainnet deployment in June 2026 and reports successful real-asset transfers in both directions without an observed failed settlement in that period. This is **operational experience**, not a claim that all conceivable failures have been excluded or that transfers have a guaranteed completion time.
 
