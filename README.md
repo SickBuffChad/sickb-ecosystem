@@ -1,14 +1,20 @@
 # SickB Ecosystem
 
-**One independent founder. A live Arbitrum Orbit L3. An ecosystem built to be used.**
+**Built independently. Powered by Arbitrum. Open to collaboration.**
 
-[**Explore SickB**](https://sickb.io) · [**Bridge**](https://sickb.io/bridge) · [**Trade**](https://sickb.io/dex) · [**SickPad**](https://sickb.io/sickpad) · [**Chain explorer**](https://sickb.io/scan)
+Welcome to the official technical documentation and development portfolio for SickB.
 
-SickB started as a meme-token community in January 2025. When the infrastructure underneath that community changed, its founder organized a manual migration to Ethereum instead of abandoning holders. The experience led to a bigger decision: build and operate the infrastructure the project depends on.
+SickB is a live Arbitrum Orbit AnyTrust Layer 3 ecosystem, built and operated primarily by one self-funded developer.
 
-On **June 3, 2026**, SickB Chain launched on mainnet. Today the ecosystem combines an independently operated **Arbitrum Orbit AnyTrust Layer 3**, a purpose-built **Ethereum asset bridge**, DEX and launch infrastructure, individual smart-contract Vaults, Social, an Android app in **Google Play internal testing**, and **ChadBot**, an AI community agent.
+What began as a small cryptocurrency community has grown into an operating blockchain with its own Ethereum bridge, decentralized exchange, smart-contract Vaults, launch infrastructure, Social platform, Android application, and AI-powered community agent.
 
-This is a **public technical and product portfolio** for prospective users, collaborators, reviewers, and the Arbitrum ecosystem. It is not a token offering, an assertion of a completed independent security certification, or a dump of operational credentials and private production source.
+This repository exists to make that work accessible.
+
+Here you'll find architecture explanations, technical references, user guides, verified development milestones, and our roadmap. Developers can explore what we've built, understand how our systems work, and identify opportunities to contribute or integrate.
+
+We believe good engineering should be understandable and verifiable. That doesn't require publishing private infrastructure configurations, security credentials, or proprietary implementation details.
+
+**The infrastructure is running. The ecosystem is growing. And we're opening the door to the people who want to help build what comes next.**
 
 ## The first deliberate transaction: a message to the Herd
 
