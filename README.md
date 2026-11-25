@@ -44,27 +44,25 @@ This dedication was placed onchain **20 days before the founder's June 23 target
 
 ## The architecture at a glance
 
+SickB has **two related but distinct architectures**: the Ethereum ↔ SickB **Baht Bus asset bridge**, and the **Orbit L3 rollup parent relationship** with Arbitrum One.
+
 ```text
-Ethereum mainnet (L1)
-    │
-    │  SickB's custom Baht Bus asset bridge
-    │  Ethereum lockbox ↔ L3 minting / withdrawal / verification
-    ▼
-Arbitrum One (parent chain)
-    │
-    │  Arbitrum Orbit / AnyTrust
-    ▼
-SickB Chain (Layer 3, chain ID 5016)
-    │
-    ├── DEX, trading terminal and automated trading
-    ├── SickPad project-launch infrastructure
-    ├── Owner-controlled Vaults and device-authorized actions
-    ├── SickB Social and Android Product Zero
-    ├── ChadBot, community history and live chain information
-    └── Explorer, oracle services and evolving DAO governance
+BAHT BUS — ASSET MOVEMENT                 ORBIT — CHAIN ARCHITECTURE
+Ethereum mainnet (lockbox)               Ethereum mainnet (settlement)
+              ⇅                                     │
+  independently verified bridge                    ▼
+   events / transfer releases                  Arbitrum One
+              ⇅                                     │
+SickB Chain (L3, chain 5016)                       ▼
+  wrapped assets + gSICKB                     SickB Chain L3
+  DEX / Vault / Social                        AnyTrust / sequencer
 ```
 
-**Important distinction:** SickB is an **Arbitrum Orbit L3 using Arbitrum One as its parent**. It is not a claim to have invented the underlying Arbitrum technology or to be a native application deployed directly on Arbitrum One. The founder built and operates the SickB-specific chain configuration, cross-chain bridge architecture, services and applications on top of open-source foundations including Arbitrum.
+**Arbitrum One is SickB's parent chain, not an intermediary asset bridge.** The actual Baht Bus asset flow connects Ethereum's lockbox directly to SickB's L3 bridge contracts.
+
+**Infrastructure we operate:** Ethereum execution and consensus nodes (**Reth + Lighthouse**), an **Arbitrum One Nitro node**, SickB's **L3 sequencer**, and its **AnyTrust infrastructure**, plus bridge relayers, an auditor and independent verification/attestation services.
+
+SickB relies on Ethereum/Arbitrum settlement and open-source Arbitrum technology, while independently operating its own node and application stack. [**Detailed Baht Bus architecture**](docs/baht-bus-bridge.md).
 
 ## What is built
 
