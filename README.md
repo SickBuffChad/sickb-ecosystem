@@ -10,6 +10,30 @@ On **June 3, 2026**, SickB Chain launched on mainnet. Today the ecosystem combin
 
 This is a **public technical and product portfolio** for prospective users, collaborators, reviewers, and the Arbitrum ecosystem. It is not a token offering, an assertion of a completed independent security certification, or a dump of operational credentials and private production source.
 
+## The first deliberate transaction: a message to the Herd
+
+SickB Chain did not begin with a token sale or a marketing announcement. Its **first deliberate application transaction** was a permanent dedication written by the founder on **May 29, 2026** and deployed on **June 3, 2026**, in **SickB Chain mainnet block 10**. Initialization occupied blocks 1–8, with a gas deposit in block 9.
+
+From that dedication:
+
+> I remember setting up my first purchase of Litecoin over a decade ago, never did I think I would eventually create something like this.
+
+> The blocks can drop, and the goal can be reached.
+
+> Never forget, "All roads lead to SickB" and this community that will build from here into the future needs you to tell the story.
+
+The complete 907-byte message is embedded in the immutable `SickBGenesis` contract. Anyone can verify the message through `getMessage()` and the canonical `messageHash()` on **SickB Chain (5016)**.
+
+| Founding record | Value |
+| --- | --- |
+| Mainnet block | **10** |
+| Transaction | `0xaf525995884b1c6f0b0086ff5554ec952523d095ce2dbc3f66d213954da99ab8` |
+| SickBGenesis contract (chain 5016) | `0x86734D2fc365231b8502254e08aE635Ae949DA0A` |
+| Contract message hash (keccak256) | `0x34c0404f3fe18f5a68027de66dc43c9252855d7a1d6599af0e04af1a1355ac7c` |
+| Canonical message file SHA-256 | `df41ef3015e9f73f7154a0755c76189a7173e8d6be95a290ed0e9fa892e0b1fa` |
+
+This dedication was placed onchain **20 days before the founder's June 23 target date**. It is a record of gratitude, perseverance and the people who helped SickB survive the transition from a meme-token community into an operating blockchain.
+
 ## The architecture at a glance
 
 ```text
