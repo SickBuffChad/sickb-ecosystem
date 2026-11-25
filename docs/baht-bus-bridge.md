@@ -1,0 +1,105 @@
+# Baht Bus Bridge — SickB's Native Asset Bridge
+
+**Status:** Mainnet bridge in operation · **Network:** SickB Chain (Arbitrum Orbit AnyTrust L3, chain ID `5016`) · **Parent:** Arbitrum One · **Canonical asset origin:** Ethereum mainnet
+
+## Why we built it
+
+SickB is a blockchain ecosystem, not a general-purpose cross-chain messaging protocol. Once we built our own Arbitrum Orbit L3, we needed a way to bring Ethereum assets into that environment and return them to Ethereum without making users assemble a separate set of infrastructure services.
+
+**Baht Bus is the bridge built specifically for that need.** It is a SickB-operated system rather than an integration of a third-party messaging or bridge provider. Its role is to connect Ethereum liquidity to SickB's onchain products: trading, smart-contract Vaults, Social payments, and future applications.
+
+The objective was practical: **move supported assets between Ethereum and SickB, make the user experience straightforward, and give the destination wallet native SickB gas where the bridge design requires it.**
+
+The system was developed and exercised through multiple iterations on an Ethereum Sepolia / Arbitrum Sepolia / SickB L3 test environment before the June 2026 mainnet launch. The original bidirectional testnet bridge was documented as working in February 2026. The design subsequently evolved to support multiple assets and additional operational checks.
+
+## What it connects
+
+```text
+Ethereum mainnet (canonical assets and lockbox)
+             │
+             │   Bridge observations / messages / relayers
+             ▼
+Arbitrum One (parent chain)
+             │
+             ▼
+SickB Chain · Arbitrum Orbit AnyTrust L3 · chain ID 5016
+             │
+             ├─ Wrapped supported assets
+             ├─ Native gSICKB gas
+             └─ SickB DEX, Vaults, Social and other applications
+```
+
+The currently supported principal routes are **SICKB, WETH and USDC**. A registry associates their canonical L1 tokens with L3 wrapped assets and governs whether each direction is enabled and within configured limits. Bridge capacity is ultimately constrained by available collateral, enabled routes and operational safeguards, not an advertised unlimited-liquidity guarantee.
+
+**Native gas is a separate asset from bridged wSICKB:** SickB uses **gSICKB** for L3 transaction fees. The Baht Bus gas-sponsorship system is designed to make supported bridge operations and subsequent L3 interactions usable without an additional manual gas-funding journey.
+
+## Ethereum → SickB: deposit and onboarding
+
+At the architectural level:
+
+1. The user's supported canonical assets are locked in the Ethereum-side bridge contract.
+2. Cross-chain processing identifies the deposit and performs route and transaction checks before authorizing minting on SickB.
+3. The L3 finalization operation delivers the corresponding wrapped asset and, for the gas-sponsored design, delivers a native gas ticket to the SickB wallet.
+
+**The wrapped-asset mint and native-gas sponsorship are atomic within the L3 finalization transaction.** If the required combined L3 operation reverts, neither of those L3 effects is committed. Deposit IDs and processing status are used to prevent duplicate finalization.
+
+That guarantee is **local to the destination-chain transaction**. It does not mean that a prior Ethereum lock is automatically rolled back by a later L3 failure; cross-chain delivery, reconciliation and recovery remain separate concerns.
+
+## SickB → Ethereum: withdrawal and release
+
+The mainnet V2 design uses a similarly coordinated L3 operation:
+
+1. The user initiates a withdrawal against the enabled registry route.
+2. In **one SickB L3 transaction**, the contract receives the wrapped tokens, burns the net withdrawal amount, and requests a native gSICKB gas ticket for the originating wallet.
+3. **If the gas sponsorship step fails, the entire L3 withdrawal transaction reverts.** The transfer, burn and withdrawal record do not partially commit.
+4. A successful L3 transaction emits a withdrawal record indicating gas delivery.
+5. A **separate read-only verification and attestation path** checks that the L3 withdrawal exists, the token route is valid and enabled, the required gas-delivery flag is present, and the Ethereum withdrawal has not already been released.
+6. A transaction-submitting relayer presents the signed authorization to the Ethereum lockbox, which processes the release subject to its onchain rules.
+
+The design intentionally separates **verification / attestation** from **transaction submission**. The relayer cannot treat an arbitrary L3 event as sufficient authorization to release Ethereum collateral.
+
+## The meaning of “atomic”
+
+**The term is important, and we use it precisely.**
+
+- **Inbound:** asset minting and the associated native-gas gift execute together or revert together **on SickB L3**.
+- **Outbound:** wrapped-token withdrawal/burn and the associated native-gas gift execute together or revert together **on SickB L3**.
+- **Cross-chain:** Ethereum settlement and SickB settlement happen in **different transactions on different chains**. The entire end-to-end movement is **not** a single atomic Ethereum-plus-L3 transaction.
+
+This distinction is why the architecture also includes route validation, unique event identifiers, processed/released checks, independent attestation, reconciliation and operational recovery procedures.
+
+A cross-chain operation can remain **pending** when a subsequent step is delayed, even if an individual onchain step has succeeded. Atomic L3 operations reduce partial-state risks **inside those L3 transactions**; they do not remove every possible delay, failure mode or recovery obligation across networks.
+
+## Practical security and operating properties
+
+| Property | How the architecture addresses it |
+| --- | --- |
+| Canonical-asset backing | Ethereum-side locked assets back the corresponding wrapped assets on SickB |
+| Token identification | Registry links permitted L1 assets to their L3 representations and route controls |
+| Replay / double-release controls | Deposit and withdrawal IDs, processed-state and released-state checks |
+| L3 onboarding | Native gSICKB sponsorship incorporated into supported bridge actions |
+| Withdrawal release authorization | Read-only verification, a separate signed attestation and Ethereum contract validation |
+| Operational resilience | Dedicated relay, verifier and auditor functions; monitored processing and reconciliation |
+| Fees and reserves | Mainnet V2 withdrawal fee configured at **25 basis points (0.25%)** in the product configuration; wrapped-token fee reserves are designed to remain backed by Ethereum collateral |
+
+**Fee settings are governed by live contract configuration**, so current onchain parameters—not this document—are the authoritative value at transaction time. The potential transfer of protocol-owned reserves to future DAO/multisig stewardship is a **roadmap objective**, not a claim of current DAO custody.
+
+## Experience and evidence
+
+The founder has operated the bridge for approximately five months since mainnet deployment in June 2026 and reports successful real-asset transfers in both directions without an observed failed settlement in that period. This is **operational experience**, not a claim that all conceivable failures have been excluded or that transfers have a guaranteed completion time.
+
+Representative transfers have completed in tens of seconds, but timing depends on the underlying chains, confirmations, transaction inclusion and processing conditions.
+
+Public reviewers can examine the **Ethereum-side lockbox** at [Etherscan](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A) and the SickB Chain explorer at [sickb.io/explorer](https://sickb.io/explorer). A separate evidence pack can include dated, matched transaction receipts and collateral reconciliation snapshots. **No claim of a completed independent security audit is made here.**
+
+## How this differs from a general-purpose interoperability protocol
+
+LayerZero and similar frameworks provide interoperability tooling that applications and chains can integrate. **Baht Bus was not designed as a universal substitute for those systems.** SickB is itself the operating blockchain; Baht Bus is the ecosystem-specific bridge we engineered to serve it.
+
+We are not claiming that gas delivery, cross-chain messaging or bridge safety mechanisms are unique inventions. The achievement is **building, integrating and operating these components as a coherent bridge for an independently run Orbit L3**.
+
+Its architecture may inform future collaborations or integrations with other chains, but that is a **possible future direction**, not a product offered today.
+
+---
+
+*Public architecture overview · November 25, 2026. Intentionally excludes private operational configuration, signing infrastructure, security-sensitive implementation details and proprietary source. This document is technical context, not a formal audit.*
