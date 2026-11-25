@@ -12,7 +12,7 @@ This is a **public technical and product portfolio** for prospective users, coll
 
 ## The architecture at a glance
 
-\`\`\`text
+```text
 Ethereum mainnet (L1)
     │
     │  SickB's custom Baht Bus asset bridge
@@ -30,7 +30,7 @@ SickB Chain (Layer 3, chain ID 5016)
     ├── SickB Social and Android Product Zero
     ├── ChadBot, community history and live chain information
     └── Explorer, oracle services and evolving DAO governance
-\`\`\`
+```
 
 **Important distinction:** SickB is an **Arbitrum Orbit L3 using Arbitrum One as its parent**. It is not a claim to have invented the underlying Arbitrum technology or to be a native application deployed directly on Arbitrum One. The founder built and operates the SickB-specific chain configuration, cross-chain bridge architecture, services and applications on top of open-source foundations including Arbitrum.
 
@@ -83,9 +83,9 @@ The H#3 operator relays approved actions and sponsors gas; the device credential
 
 | Contract | Address |
 | --- | --- |
-| SickbVaultDevices | \`0x483D8267cd21c3733d21e27be063163B2fA7beDD\` |
-| SickbVaultExecutor | \`0xfE329B2Fe4a5b1cCb945abb965a538E19590d2a9\` |
-| BotVaultFactory | \`0x443f069f778F0080Bd704aD9212D9232441A2818\` |
+| SickbVaultDevices | `0x483D8267cd21c3733d21e27be063163B2fA7beDD` |
+| SickbVaultExecutor | `0xfE329B2Fe4a5b1cCb945abb965a538E19590d2a9` |
+| BotVaultFactory | `0x443f069f778F0080Bd704aD9212D9232441A2818` |
 
 The two new contracts' deployment identity and compiled runtime were independently reproduced against source, alongside **195 passing fork checks** in the November 2026 engineering review. This is **not a full third-party audit of every live component**. Production-relay and wider device-testing limitations are documented internally and are being addressed before broader distribution.
 
@@ -132,8 +132,8 @@ During 2026, a **55-day Arbitrum parent-chain batch-posting backlog** required i
 | Launch infrastructure | [SickPad](https://sickb.io/sickpad) |
 | Chain explorer | [SickB Scan](https://sickb.io/scan) |
 | Ethereum lockbox | [Etherscan contract](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A) |
-| Mainnet read-only RPC | \`https://rpc-mainnet.sickb.io\` |
-| Chain ID | \`5016\` |
+| Mainnet read-only RPC | `https://rpc-mainnet.sickb.io` |
+| Chain ID | `5016` |
 
 **Evidence release plan:** Add a dated, read-only proof bundle with representative L1/L3 bridge receipts, collateral and supply reconciliations by asset, operator batch-posting recovery records, deployed contract references, and Product Zero screenshots with personal information removed. No unverified TVL, user counts, bridge volume or performance guarantees will be published.
 
