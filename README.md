@@ -22,6 +22,8 @@ From that dedication:
 
 > Never forget, "All roads lead to SickB" and this community that will build from here into the future needs you to tell the story.
 
+[**Read the complete founder dedication and successful block-10 transaction receipt**](evidence/genesis-block-10.md).
+
 The complete 907-byte message is embedded in the immutable `SickBGenesis` contract. Anyone can verify the message through `getMessage()` and the canonical `messageHash()` on **SickB Chain (5016)**.
 
 | Founding record | Value |
