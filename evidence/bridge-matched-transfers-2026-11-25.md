@@ -50,6 +50,21 @@ Amounts below are **net withdrawal/release amounts**, not necessarily gross inpu
 
 **Limits:** The recent matching script did not independently re-fetch every L3 receipt in the same run; its L3 side relies on the existing canonical-chain activity indexer and its confirmation checks. It did not establish end-user confirmation-display time, mobile SDK behavior, proof-of-stake finality, gas-sponsorship receipt data, fees, reserve backing, or complete historical service availability. Different sampling dates/traffic can produce different results. These receipts are public evidence that can be checked independently using the shown hashes and chain RPCs, not an independent audit.
 
+## Post-workaround physical-device follow-up (two additional transfers)
+
+**Timing:** November 25, 2026 in Pacific time / **November 26, 2026 UTC**. These **two additional transfers were not among the ten baseline transfers in the tables above**. In a later H#3 query, five new L3 bridge events were matched 5/5 to Ethereum. **The founder identified only the final two by time as the bridge-direction tests conducted after enabling MetaMask's unrestricted background activity setting on the physical Android device.** This classification comes from the test operator, not from an attribute encoded onchain.
+
+| Direction | Net/credited asset amount | Bridge ID | Ethereum transaction and block | SickB transaction and block | Source UTC → destination UTC (Nov 26) | Seconds |
+| --- | ---: | --- | --- | --- | --- | ---: |
+| Ethereum → SickB | **9,351.5625 SICKB** | `0x6dd022dc6fa4b10fc7239475d02a6c39b7911a19ff7063e060d6fc2d19618f65` | `0xb987f458c26969477db3945528aec2a04d202e3963dda364454aa9762d5d30fa` · **26,496,216** | `0xd110aa52dab583a0a8e66f18ed9ffd008197370dcd687f7fce7c556aeabe5ca6` · **352,983** | 01:55:11 → 01:55:33 | **22** |
+| SickB → Ethereum | **997,500 SICKB net** | `0x2bbca1c3d140a03b26a53770538652c5f74aa3dbfa2a9200ccac080d16b3a5c5` | `0xfbc36d2c47f1a70c7c0acef48cb8bf92bbf2ee6f1cf1fedf932656107d5c57f2` · **26,496,229** | `0x0d99d8b3c9b81a74bc87b605222092bf8282dd8e4848ca4ed74b079715c4a625` · **352,986** | 01:56:48 → 01:57:47 | **59** |
+
+**Matching query:** Ethereum blocks **26,488,339–26,496,339**, filtered to five selected bridge IDs. Exact-ID deposit event and exact-ID `release()` calldata/lockbox ERC-20 transfer checks matched all five, and the Ethereum transaction receipts were successful with canonical block-hash matches. Only the **final two records** are founder-confirmed post-workaround. The initial ten-transfer baseline remains unchanged.
+
+These measurements exclude wallet connection, approvals, user signing, pre-inclusion waits and Ethereum consensus finality. Successful post-workaround mobile interaction is a separately observed test outcome. This two-transfer follow-up **does not support a causal claim that the Android setting decreased the bridge's intrinsic settlement latency**. The SickB side relies on the H#3 confirmed activity index rather than fresh independent revalidation of every L3 receipt in the matching script.
+
+See [MetaMask Mobile relay-recovery case study](../docs/metamask-mobile-relay-recovery.md#post-workaround-bridge-settlement-matched-mainnet-receipts) for the physical-device investigation and limits.
+
 ## Engineering context
 
 - [Baht Bus architecture and trust boundaries](../docs/baht-bus-bridge.md)
