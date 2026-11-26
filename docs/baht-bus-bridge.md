@@ -1,4 +1,4 @@
-# Baht Bus Bridge — SickB's Native Asset Bridge
+# Baht Bus Bridge: SickB's native asset bridge
 
 **Status:** Mainnet bridge in operation · **Network:** SickB Chain (Arbitrum Orbit AnyTrust L3, chain ID `5016`) · **Parent:** Arbitrum One · **Canonical asset origin:** Ethereum mainnet
 
@@ -14,7 +14,7 @@ The system was developed and exercised through multiple iterations on an Ethereu
 
 ## What it connects
 
-**Two distinct relationships—not an Ethereum → Arbitrum One → SickB asset-bridge route:**
+**Two distinct relationships, not an Ethereum → Arbitrum One → SickB asset-bridge route:**
 
 ```text
 ASSET BRIDGE (Baht Bus)                     ROLLUP / SETTLEMENT PARENT
@@ -87,7 +87,7 @@ A cross-chain operation can remain **pending** when a subsequent step is delayed
 | Operational resilience | Dedicated relay, verifier and auditor functions; monitored processing and reconciliation |
 | Fees and reserves | Mainnet V2 withdrawal fee configured at **25 basis points (0.25%)** in the product configuration; wrapped-token fee reserves are designed to remain backed by Ethereum collateral |
 
-**Fee settings are governed by live contract configuration**, so current onchain parameters—not this document—are the authoritative value at transaction time. The potential transfer of protocol-owned reserves to future DAO/multisig stewardship is a **roadmap objective**, not a claim of current DAO custody.
+**Fee settings are governed by live contract configuration**, so current onchain parameters, not this document, are authoritative at transaction time. The potential transfer of protocol-owned reserves to future DAO/multisig stewardship is a **roadmap objective**, not a claim of current DAO custody.
 
 ## Experience and evidence
 
@@ -99,7 +99,7 @@ The founder has operated the bridge for approximately five months since mainnet 
 
 Representative transfers have completed in tens of seconds, but timing depends on the underlying chains, confirmations, transaction inclusion and processing conditions.
 
-Public reviewers can examine the **Ethereum-side lockbox** at [Etherscan](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A) and the SickB Chain explorer at [sickb.io/explorer](https://sickb.io/explorer). A separate evidence pack can include dated, matched transaction receipts and collateral reconciliation snapshots. **No claim of a completed independent security audit is made here.**
+Public reviewers can inspect the Ethereum-side [lockbox on Etherscan](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A), the [matched cross-chain transaction receipts](../evidence/bridge-matched-transfers-2026-11-25.md), and the [read-only collateral reconciliation method](../evidence/reconciliation-method.md). The ten selected November 25 transfer pairs, plus two later mobile follow-ups, are documented with exact bridge IDs and chain-specific transactions. A complete historical reconciliation and independent security audit have not been published. The [evidence index](../evidence/INDEX.md) identifies those gaps.
 
 ## How this differs from a general-purpose interoperability protocol
 
