@@ -13,7 +13,7 @@ This guide is for developers evaluating SickB Chain or planning a documented int
 | Parent | Arbitrum One (chain 42161) |
 | Native gas currency | gSICKB |
 | Public read-only RPC | https://rpc-mainnet.sickb.io |
-| Project explorer entry | https://sickb.io/explorer |
+| Mainnet explorer | [SickB Scan](https://sickb.io/explorer), identified as chain 5016 |
 | Ethereum canonical asset chain | Ethereum mainnet (chain 1) |
 
 These are the production SickB L3 settings. SickB testnet uses a different chain ID and must not be confused with mainnet. Check RPC responses and the exact chain ID before signing a transaction. The explorer interface is project-operated; use blockchain RPC and the chain-specific transaction hashes to cross-check important results.
