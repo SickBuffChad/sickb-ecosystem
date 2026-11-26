@@ -48,13 +48,18 @@ cast call 0x9b4d4f0ce03CB60De813c13EfBcA153F1418ac24 \
   --rpc-url https://rpc-mainnet.sickb.io \
   --block "$L3_BLOCK"
 
-# Optional: read the bridge's current, version-specific fee parameter.
-cast call 0xd5583d37a84fB3ffDa3395334F3E5c714Ffb64f7 \
-  'withdrawFeeBps()(uint256)' \
+# Query the actual bridge registry's getToken(address) ABI for the
+# SICKB route. This reports the registry's bpsFee field, not necessarily
+# a separate V2 withdrawal-contract fee or the user's realized fee.
+cast call 0xBde1C3EB2711dB702c9E30504f16fBb95C3962Db \
+  'getToken(address)((address,address,string,uint8,bool,bool,bool,uint256,uint256,address,uint256,uint256,uint256,uint256,uint256,bool,bool,bool,bool,uint256))' \
+  0x8172e2Ff7009483ff98c24Bd639C8078caCED9a3 \
   --rpc-url https://rpc-mainnet.sickb.io
 ~~~
 
 Run the corresponding balance/supply commands for WETH and USDC, observing their decimals. This example prints raw integer units and does not by itself generate an audited reconciliation.
+
+The mainnet website configuration specifies **25 basis points (0.25%)** for withdrawals. The function `withdrawFeeBps()` previously suggested in this document was not supported by the V2 ABI available for this review and has been removed. The bridge registry's actual `getToken(address)` ABI includes a `bpsFee` route field, but that field must not be conflated with the V2 withdrawal contract's effective fee without reviewing its own implementation or an exact gross/net onchain receipt. A live, contract-level 25 bps reading has **not** been independently reproduced in this documentation update. The transaction evidence and website configuration support the stated product setting, not an independently measured live getter.
 
 The historical 0.00375 ETH deposit surcharge appearing in some older configurations was an unimplemented placeholder, not a realized Ethereum lockbox charge. Do not include it in bridge revenue.
 
