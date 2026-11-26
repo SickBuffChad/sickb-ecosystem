@@ -19,6 +19,12 @@ These items are already part of the project's documented work. They do not add n
 
 No new release commitments, milestones or feature expansions are made by this document.
 
+## Long-term vision in the historical whitepaper
+
+SickB's original [technical whitepaper](https://sickb.io/whitepaper.pdf) envisioned **Sick Buffalo DAO** governance and distinct **subDAOs**, wider community node and validator participation, entertainment and gaming experiences, and real-world asset integration. The proposed **Sick Buffalo Bar** was a physical place where the online community could meet and a possible first example of an RWA-oriented business.
+
+These ideas remain part of the founding vision, not new commitments in this ARB02 review. The DAO and subDAO ownership models, external validation roles, asset acquisitions, entertainment initiatives and physical bar are **not being represented as completed current offerings**. The near-term priorities in the table above remain unchanged.
+
 ## Suitable collaboration paths
 
 External developers can review the [architecture](architecture-products.md), reproduce [published receipts](../evidence/INDEX.md), check [network compatibility](developer-start.md), investigate non-sensitive [MetaMask transport findings](metamask-mobile-relay-recovery.md), and suggest bounded integrations or documentation corrections.
