@@ -81,6 +81,24 @@ The founder then completed Ethereum-to-SickB and SickB-to-Ethereum bridging, inc
 
 No SickB production connector, bridge contract, bridge bot, Vault or transaction-sequencing changes were required.
 
+### Post-workaround bridge settlement: matched mainnet receipts
+
+The founder identified **the final two transactions in the follow-up set** as the physical-device bridge journeys performed **after** changing MetaMask's Android background battery setting. The Ethereum and SickB transactions were subsequently matched using their **exact bridge IDs**. These are **November 25, 2026 Pacific time (November 26 UTC)** observations; they are not the complete set of five L3 events discovered in the same later activity query.
+
+| Journey | Asset amount | Source block inclusion (UTC, November 26) | Destination block inclusion (UTC, November 26) | Inclusion-to-inclusion time |
+| --- | ---: | --- | --- | ---: |
+| Ethereum → SickB | **9,351.5625 SICKB** | Ethereum block **26,496,216** · 01:55:11 | SickB block **352,983** · 01:55:33 | **22 seconds** |
+| SickB → Ethereum | **997,500 SICKB net** | SickB block **352,986** · 01:56:48 | Ethereum block **26,496,229** · 01:57:47 | **59 seconds** |
+
+**Exact onchain references**
+
+- **Ethereum → SickB deposit ID:** `0x6dd022dc6fa4b10fc7239475d02a6c39b7911a19ff7063e060d6fc2d19618f65`; [Ethereum source transaction](https://etherscan.io/tx/0xb987f458c26969477db3945528aec2a04d202e3963dda364454aa9762d5d30fa) `0xb987f458c26969477db3945528aec2a04d202e3963dda364454aa9762d5d30fa`; SickB mint transaction `0xd110aa52dab583a0a8e66f18ed9ffd008197370dcd687f7fce7c556aeabe5ca6`.
+- **SickB → Ethereum withdrawal ID:** `0x2bbca1c3d140a03b26a53770538652c5f74aa3dbfa2a9200ccac080d16b3a5c5`; SickB initiation transaction `0x0d99d8b3c9b81a74bc87b605222092bf8282dd8e4848ca4ed74b079715c4a625`; [Ethereum release transaction](https://etherscan.io/tx/0xfbc36d2c47f1a70c7c0acef48cb8bf92bbf2ee6f1cf1fedf932656107d5c57f2) `0xfbc36d2c47f1a70c7c0acef48cb8bf92bbf2ee6f1cf1fedf932656107d5c57f2`.
+
+**Verification scope:** a read-only H#3 query selected five later L3 bridge events, then matched all five to successful Ethereum lockbox deposit/release receipts, using exact IDs and matching token/amount (and recipient where applicable), with canonical Ethereum block-hash checks. The L3 side came from the existing confirmed-activity indexer rather than an independent L3 receipt re-fetch in that matching run. **The founder specifically identified only the last two** as post-setting-change tests; the other three must not be labeled as such without separate confirmation.
+
+These times are **source-chain transaction inclusion → destination-chain transaction inclusion**, **not** tap-to-completion times, wallet approval duration, MetaMask notification latency, or Ethereum consensus finality. The observation of successful wallet handoffs on the founder's test device is separate from the onchain timing. **Two selected observations cannot establish that the battery workaround accelerated bridge settlement or that these timings generalize to other devices.** The relevant matched-receipt ledger is also documented in the [bridge evidence appendix](../evidence/bridge-matched-transfers-2026-11-25.md#post-workaround-physical-device-follow-up-two-additional-transfers).
+
 This setting may increase battery consumption. Change the MetaMask app setting only; do not disable device-wide power management. The setting can be reverted through Android Settings. This is a verified workaround for the tested device and software combination, not a guarantee for every Android model, wallet or iOS device.
 
 If a confirmation is missing, do not initiate another transaction blindly. An outstanding request may still be pending or a transaction may already have been broadcast. Reconcile its status before submitting anything again.
