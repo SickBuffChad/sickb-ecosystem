@@ -63,7 +63,7 @@ Vaults are individual smart contracts owned through the user's wallet. A registe
 
 ## Practical experience and known limits
 
-In 2026, the team investigated and recovered from an extended parent-chain batch-posting backlog. That experience is relevant to operational reliability, but complete dated posting receipts and reconciliation artifacts remain a separate publication task.
+In 2026, Joshua Spoehr investigated and recovered from an extended parent-chain batch-posting backlog, with AI assistance to the engineering and analysis workflow. That experience is relevant to operational reliability, but complete dated posting receipts and reconciliation artifacts remain a separate publication task.
 
 The [MetaMask Mobile investigation](metamask-mobile-relay-recovery.md) documented a physical-device wallet-confirmation issue and a reversible Android workaround. Successful bidirectional bridge tests after the workaround required no SickB production code changes. A proposed wallet-side recovery repair remains experimental.
 
