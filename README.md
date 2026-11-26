@@ -4,7 +4,7 @@ Sick Buffalo began as a community token in January 2025. It now operates SickB C
 
 This is the public engineering portfolio for [SickB Digital LLC](https://sickb.io). It explains what has been built, how the systems relate, what has been tested and where evidence or outside review is still needed. It is not the private production source repository.
 
-Project lead: **Founder, Systems Architect, Developer and Infrastructure Operator**. The work has been self-funded and developed with extensive AI assistance beginning with GPT-4. The founder remains responsible for architectural decisions, testing and operation. Ethereum, Arbitrum and Offchain Labs provided the technology on which the chain was built.
+Project lead: **Joshua Spoehr, Founder, Systems Architect, Developer and Infrastructure Operator**. SickB has been self-funded and developed with AI assistance beginning with GPT-4, under Joshua's direction and testing. His GitHub activity displayed **2,561 contributions over the preceding year in November 2026**. That is a contribution metric, not a commit count. Ethereum, Arbitrum and Offchain Labs provided the technology on which SickB Chain was built.
 
 ## Start here: five areas
 
@@ -53,7 +53,7 @@ The architecture uses a single-operator sequencer and committee-based data avail
 
 ## History worth preserving
 
-When the original Pepe Unchained infrastructure changed in 2025, SickB holders voluntarily entrusted legacy tokens to the founder for a manually verified, 1:1 Ethereum migration. The founder reports honoring every verified distribution. Contemporary records also document cancelled Pinksale and GemPad offerings, refund processes and token burns. A complete public transaction-by-transaction audit of those historic actions is still to be assembled; we do not treat cancellation announcements as independently verified universal refunds.
+When the original Pepe Unchained infrastructure changed in 2025, SickB holders voluntarily entrusted legacy tokens to Joshua for a manually verified 1:1 Ethereum migration. Every verified distribution was honored according to the project history. The [historical whitepaper](https://sickb.io/whitepaper.pdf) records **full ETH refunds for all PinkSale and GemPad presale participants** after both offerings were discontinued. It also documents **1.484 billion Ethereum-era SICKB burned through November 2025, 59.36% of the original 2.5 billion supply**, with several transaction hashes listed in the [history](docs/history.md). These are historical project records; the complete transaction-level reconciliation has not been independently repeated for this portfolio.
 
 The chain's first deliberate application transaction, on June 3, 2026 in mainnet block 10, preserved a message written to the community on May 29:
 
@@ -61,7 +61,9 @@ The chain's first deliberate application transaction, on June 3, 2026 in mainnet
 
 The [full dedication and chain-specific receipt](evidence/genesis-block-10.md) are preserved without editorial changes.
 
-The [historical technical whitepaper v2.0](https://sickb.io/whitepaper.pdf) records earlier plans and reasoning. Treat it as history, not as an automatically current list of shipped features. [Read the chronology](docs/history.md).
+In December 2025, Joshua lost a phone containing wallet access. That experience helped shape the later Vault principle: **a device may authorize specific actions, while ownership of the assets remains with the original wallet**. Losing the wallet's own recovery keys is a separate risk. [Read the full account](docs/history.md#december-2025-the-lost-phone-and-the-later-vault-design).
+
+The [historical technical whitepaper v2.0](https://sickb.io/whitepaper.pdf) also outlines the **Sick Buffalo DAO, subDAOs, community node and validator participation, entertainment, RWA integration, and Sick Buffalo Bar** as long-term ambitions. These are not being presented as shipped products or new commitments. [Read the history and original vision](docs/history.md#original-long-term-vision).
 
 ## Engineering evidence you can inspect
 
@@ -81,13 +83,13 @@ Market capitalization is not corporate funding, bridge locked value, protocol re
 | Chain ID | 5016 (0x1398) |
 | Native gas | gSICKB |
 | Public SickB RPC | https://rpc-mainnet.sickb.io |
-| Explorer entry | https://sickb.io/explorer |
+| Mainnet explorer | [SickB Scan](https://sickb.io/explorer), labeled SickB Chain mainnet, chain ID 5016 |
 | Ethereum lockbox, chain 1 | [0x86734D2fc365231b8502254e08aE635Ae949DA0A](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A) |
 | Main product | [sickb.io](https://sickb.io) |
 | Ethereum asset bridge | [sickb.io/bridge](https://sickb.io/bridge) |
 | Developer contract list | [Chain-specific mainnet references](docs/developer-start.md#contracts-and-supported-assets) |
 
-A legacy /scan route has been observed returning a testnet view. The /explorer entry above is the project's intended mainnet reference; please validate its live interface before relying on it for high-stakes review. For proofs, prefer chain-ID-aware RPC queries and exact transaction hashes.
+The [mainnet explorer](https://sickb.io/explorer) identifies SickB Chain as chain **5016** and displays recent mainnet blocks and transactions. For reproducible checks, use the [read-only RPC instructions](docs/developer-start.md) and exact transaction hashes.
 
 ## Collaboration and mentorship
 
