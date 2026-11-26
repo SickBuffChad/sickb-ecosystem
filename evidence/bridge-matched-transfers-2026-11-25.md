@@ -1,4 +1,4 @@
-# Baht Bus — ten exact-ID cross-chain transaction matches
+# Baht Bus: matched cross-chain transaction evidence
 
 **Observation date:** November 25, 2026 (UTC)  
 **Networks:** Ethereum mainnet (chain 1) ↔ SickB Chain (Arbitrum Orbit AnyTrust L3, chain 5016)  
@@ -68,7 +68,7 @@ See [MetaMask Mobile relay-recovery case study](../docs/metamask-mobile-relay-re
 ## Engineering context
 
 - [Baht Bus architecture and trust boundaries](../docs/baht-bus-bridge.md)
-- [MetaMask Mobile relay recovery case study](../docs/metamask-mobile-relay-recovery.md) — distinguishes pre-signature wallet transport problems from onchain bridge settlement
+- [MetaMask Mobile relay recovery case study](../docs/metamask-mobile-relay-recovery.md) : distinguishes pre-signature wallet transport problems from onchain bridge settlement
 - [SickB ecosystem portfolio](../README.md)
 
 **SickB Digital LLC · Public technical evidence · November 25, 2026**
