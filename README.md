@@ -140,6 +140,20 @@ This includes more than the initial Orbit deployment: nodes, sequencer, parent-c
 
 During 2026, a **55-day Arbitrum parent-chain batch-posting backlog** required investigation, recovery rehearsal and restoration of production posting. That experience matters because a blockchain must be operated and recovered, not merely launched. Dated posting and reconciliation evidence will be added to the public proof package.
 
+### 6. Mobile wallet engineering: diagnose the fault before changing the bridge
+
+SickB's Android testing exposed a frustrating failure: MetaMask Mobile could open to its home screen instead of showing a pending confirmation after an Ethereum approval or network switch. We treated this as an **interoperability and transport-recovery investigation**, not an excuse to modify otherwise successful bridge settlement code.
+
+The November 25, 2026 [MetaMask Mobile relay-recovery case study](docs/metamask-mobile-relay-recovery.md) documents three layers of evidence:
+
+1. **Reproducible transport behavior.** A local fault-injection harness using the inspected MetaMask communication library reproduced a lost relay-channel membership problem **16/16 times**. A candidate wallet-side rejoin repair passed **32/32 checks in three separate runs**. The controlled harness is not a trace of the deployed MetaMask relay.
+2. **Read-only physical-device diagnostics.** On one Android 16 device running MetaMask Mobile 8.21.0, ADB captured seven transitions into an effective `APP_BACKGROUND` network block while the wallet process was still alive. These observations support a possible interruption mechanism but do not prove the cause of every missed confirmation.
+3. **A reversible workaround, tested end to end.** Allowing **unrestricted background battery activity for MetaMask** removed the effective network block on that device. The founder then completed **Ethereum → SickB and SickB → Ethereum bridge journeys, including network switching, without restarting MetaMask**. No SickB production connector, bridge contracts, bots, Vault or transaction sequencing were changed. This device-specific workaround may increase battery use.
+
+**Why share it?** A wallet process being alive, a transport reporting connected, and a relay channel being joined are not equivalent guarantees of message delivery. Mobile dApp and wallet developers can use the documented failure mode to inform reconnect logic, state restoration and safe handling of outstanding requests **without duplicate transaction submission**. SickB has prepared upstream investigation material and a reproducible harness; a sanitized public reproduction and formal MetaMask upstream issue remain planned, not published or accepted fixes.
+
+This is one example of the engineering approach behind SickB: **observe the real fault → reproduce it under controlled conditions → distinguish evidence from hypotheses → verify the smallest safe intervention → publish limitations and reusable lessons.**
+
 ## Project history
 
 | Date | Milestone |
@@ -152,6 +166,7 @@ During 2026, a **55-day Arbitrum parent-chain batch-posting backlog** required i
 | **June–July 2026** | Mainnet DEX, SickPad founder-launch infrastructure and liquidity migration |
 | **August–November 2026** | Batch-posting incident investigation, recovery and resumed posting |
 | **November 2026** | Mainnet passkey Vault actions, Social and Android internal testing, ChadBot upgrades |
+| **November 25, 2026** | Published MetaMask Mobile relay-recovery case study and validated an Android background-network workaround for bidirectional bridging and network switching on one physical device |
 
 ## Public links and evidence
 
@@ -164,9 +179,11 @@ During 2026, a **55-day Arbitrum parent-chain batch-posting backlog** required i
 | Chain explorer | [SickB Scan](https://sickb.io/scan) |
 | Ethereum lockbox | [Etherscan contract](https://etherscan.io/address/0x86734D2fc365231b8502254e08aE635Ae949DA0A) |
 | Mainnet read-only RPC | `https://rpc-mainnet.sickb.io` |
+| Mobile-wallet relay recovery | [MetaMask Mobile: technical case study](docs/metamask-mobile-relay-recovery.md) |
+| Mainnet bridge transfer evidence | [10 cross-chain transaction matches, November 25, 2026](evidence/bridge-matched-transfers-2026-11-25.md) |
 | Chain ID | `5016` |
 
-**Evidence release plan:** Add a dated, read-only proof bundle with representative L1/L3 bridge receipts, collateral and supply reconciliations by asset, operator batch-posting recovery records, deployed contract references, and Product Zero screenshots with personal information removed. No unverified TVL, user counts, bridge volume or performance guarantees will be published.
+**Evidence status and release plan:** The public repository now includes a documented [launch-era block-10 proof](evidence/genesis-block-10.md), a [mobile-wallet case study](docs/metamask-mobile-relay-recovery.md), and a [November 25 sample of ten matched L1/L3 bridge transfers](evidence/bridge-matched-transfers-2026-11-25.md). Still to add: comprehensive historical bridge coverage, dated collateral/supply reconciliation by asset, parent-chain batch-posting recovery receipts, and privacy-safe Product Zero screenshots. A ten-transfer sample is **not** a performance guarantee or a complete historical audit. No unverified TVL, user counts, bridge volume or uptime claims will be published.
 
 ## Why Arbitrum mentorship, why now?
 
@@ -177,6 +194,7 @@ SickB is applying for Arbitrum mentorship to gain:
 - Experienced product and go-to-market guidance.
 - Distribution and partnerships across the Arbitrum ecosystem.
 - More independent technical scrutiny and external contributors.
+- Connections with mobile-wallet and Orbit developers to turn our documented integration and recovery findings into reusable community knowledge.
 - A sharper onboarding and retention strategy for Product Zero.
 - A sustainable path from self-funded solo development to an ecosystem serving real users.
 
