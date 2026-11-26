@@ -4,7 +4,7 @@ Sick Buffalo began as a community token in January 2025. It now operates SickB C
 
 This is the public engineering portfolio for [SickB Digital LLC](https://sickb.io). It explains what has been built, how the systems relate, what has been tested and where evidence or outside review is still needed. It is not the private production source repository.
 
-Project lead: **Joshua Spoehr, Founder, Systems Architect, Developer and Infrastructure Operator**. SickB has been self-funded and developed with AI assistance beginning with GPT-4, under Joshua's direction and testing. His GitHub activity displayed **2,561 contributions over the preceding year in November 2026**. That is a contribution metric, not a commit count. Ethereum, Arbitrum and Offchain Labs provided the technology on which SickB Chain was built.
+Project lead: **Joshua Spoehr, Founder, Systems Architect, Developer and Infrastructure Operator**. SickB has been self-funded and developed with AI assistance beginning with GPT-4, under Joshua's direction and testing. His GitHub contribution activity was reported as **2,561 contributions for the preceding year on November 25, 2026**. This is a founder-provided GitHub activity figure, not a commit count or a count of deployed changes. Ethereum, Arbitrum and Offchain Labs provided the technology on which SickB Chain was built.
 
 ## Start here: five areas
 
