@@ -16,13 +16,12 @@ This register separates published proof from reported history, internal testing 
 | Mobile MetaMask issue | [Physical-device case study](../docs/metamask-mobile-relay-recovery.md) | Independently sanitized reproduction package and upstream report if or when published; more device coverage |
 | Product Zero | Android Google Play internal testing reported | Redacted release screenshots, date/version and tested journeys, without tester identities |
 | ChadBot | Product records describe V3 memory and read-only blockchain context | Dated evidence of which integrations are actively running, not just code merged |
-| Migration and burns | [History](../docs/history.md) restores the whitepaper's 1.484 billion burned (59.36%) and publishes three Ethereum-era transaction hashes | Reproduce all relevant Ethereum burn transactions, reconcile the October aggregate and publish the 1:1 migration distribution ledger |
-| Cancelled presales | [Historical whitepaper](https://sickb.io/whitepaper.pdf) records full ETH refunds for cancelled PinkSale and GemPad offerings | Individual refund transactions and complete participant accounting have not been separately indexed |
-| Whitepaper | [Project-hosted PDF](https://sickb.io/whitepaper.pdf) identified | Version/date crosswalk mapping historical proposals to currently deployed systems |
+| Migration and burns | [Founder archive evidence](historical-provenance.md) includes September 2025 burn announcements and a later **reported aggregate of 1,484,000,000 SICKB (59.36% of the original 2.5 billion)**. This aggregate is a verification target, not an independently established chain finding | Reconstruct complete chain-1 SICKB ERC-20 Transfer logs, recipient addresses and supply semantics; separately index legacy-chain burns and the complete 1:1 migration ledger before accepting the aggregate |
+| Cancelled presales | Founder archive documents PinkSale closure and a participant refund acknowledgement, plus GemPad closure and instructions for refunds | Identify both sale contracts, deposits, claims and refunds; confirm whether **all participants received full ETH refunds** using the complete transaction ledger before asserting this as verified |
 
 ## Matters for founder approval
 
-The whitepaper figures and founder history have been restored with source labels. For a later transaction-level audit, the founder can provide public-safe records linking the historical burn totals, original migration and cancelled-offering refunds to individual receipts.
+Founder and community records have been separated from public chain receipts in the [historical provenance register](historical-provenance.md). Before presenting the reported aggregate burns or complete refunds as verified, reconcile them against public Ethereum transfer logs, sale contract receipts and the original migration distribution roster.
 
 The website configuration supports **25 bps** for mainnet withdrawals. The independent contract-level check must use the verified V2 ABI and route registry, not the unsupported `withdrawFeeBps()` getter. Older 0.1% explorer copy should not be cited as current mainnet configuration.
 
