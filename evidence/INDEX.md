@@ -17,7 +17,7 @@ This is the entry point for reviewers who want transaction hashes, dates, contra
 | Vault contracts and tests | [Contract address list](../docs/developer-start.md), [product boundaries](../docs/architecture-products.md) | Three public contract addresses; founder records of 195 passing fork checks and deployed-code matching | Publish safe test-run provenance, deployment transactions and independent review scope; no full third-party audit |
 | Android Product Zero | [Current product status](../docs/architecture-products.md) | Founder-operated Google Play internal testing and mainnet user journeys | Redacted Play internal release evidence and broader device QA not yet included |
 | ChadBot V3 | [Current product status](../docs/architecture-products.md) | Historical memory, web research and read-only blockchain capabilities documented in project records | Deployed integrations and scheduled/proactive services should be validated separately |
-| Migration, presales and burns | [Historical whitepaper and founding record](../docs/history.md) | Whitepaper documents full ETH refunds for discontinued PinkSale and GemPad offerings; 1.484 billion SICKB burned by November 27, 2025 (59.36% of original 2.5 billion); first, second and November milestone transaction URLs now published | A transaction-by-transaction, independently reproduced four-event burn ledger, refund ledger and complete migration register are not included |
+| Migration, cancellations and reported burns | [Founder history](../docs/history.md), [original-record provenance](historical-provenance.md) | Archived founder announcements, one PinkSale participant's refund acknowledgement, GemPad refund instructions, and two reported September 2025 burns; [Ethereum SICKB token](https://etherscan.io/token/0x8172e2Ff7009483ff98c24Bd639C8078caCED9a3) supplies the chain-specific contract reference | Full ETH refund ledger, complete migration register, and independently reproduced burn events/totals remain in the [verification backlog](verification-gaps.md) |
 
 ## Known onchain references
 
@@ -34,7 +34,7 @@ The reference addresses below are chain-specific; verify contract code, transact
 | SickB 5016 | Vault Executor | 0xfE329B2Fe4a5b1cCb945abb965a538E19590d2a9 |
 | SickB 5016 | Vault Factory | 0x443f069f778F0080Bd704aD9212D9232441A2818 |
 
-Historical burn transaction references from the [February 2026 whitepaper](https://sickb.io/whitepaper.pdf): [September 18, 2025](https://etherscan.io/tx/0x7a5804d93228b35b1cffce9fb4ad604098a6d353df02aeed3fbaadea580c05a5), [September 26, 2025](https://etherscan.io/tx/0x979bb2872bff835da758ce123bb3e1affc15c4face3d8768bd1cd9b4a0a597fd), and [November 27, 2025](https://etherscan.io/tx/0xfdb8b44d6e1600634e01fcd38f1a6a0d17d93900ab630870b39d1d6bfebaaca7). The whitepaper gives the 1.484 billion SICKB aggregate; the complete transaction-level reconciliation has not been rerun here.
+For historic token supply and burn checks, use the [Ethereum SICKB ERC-20 contract](https://etherscan.io/token/0x8172e2Ff7009483ff98c24Bd639C8078caCED9a3) as the canonical chain-1 address, decode transfer logs and compare reported dead-address balances with historical block state. The [historical provenance register](historical-provenance.md) distinguishes original founder records from independently reproducible transactions. No unverified burn aggregate is presented as an onchain finding.
 
 The same hexadecimal contract address occurs as SickBGenesis on SickB Chain and as the lockbox on Ethereum. An address alone is insufficient to identify a contract.
 

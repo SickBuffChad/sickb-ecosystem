@@ -14,37 +14,27 @@ When Pepe Unchained announced changes to its original blockchain infrastructure 
 
 The founder organized a manual 1:1 migration for eligible SICKB holdings. Participants sent legacy tokens to a designated migration wallet and entrusted their assets to the founder personally. The original transaction amounts were checked and replacement Ethereum SICKB tokens were distributed transaction by transaction. That was a meaningful custody and execution risk for everyone who participated.
 
-Contemporaneous community records place the opening on April 27, 2025, the Ethereum trading launch on May 5, and closure of the migration in late May. The founder reports that every verified migration swap was fulfilled. The project's historical whitepaper also describes that outcome. This portfolio does not yet include a published wallet-by-wallet reconciliation proving the whole migration independently.
+Founder-authored migration announcements and archived community messages date the opening to April 27, 2025, Ethereum trading to May 5, and the closing period to late May. A participant confirmed receiving replacement tokens, and Joshua reports fulfilling every verified migration request. The archived migration-channel transaction roster is not yet reconciled publicly wallet by wallet; see the [historical source ledger](../evidence/historical-provenance.md).
 
 That trust was honored, and the experience directly influenced the decision to build and operate independent infrastructure. The point is accountability, not a claim that manual migration is an ideal permanent bridge architecture.
 
-## Cancelled presales, full ETH refunds and token burns
+## Cancelled presales, refund records and token burns
 
-SickB explored public fundraising in 2025, but the proposed offerings were discontinued. The February 2026 [technical whitepaper, Chapter 13](https://sickb.io/whitepaper.pdf) states that **both PinkSale and GemPad were cancelled and all participants received full ETH refunds**. The project did not retain those cancelled presales as development financing. Contemporaneous community notes separately document the PinkSale cancellation in June and the GemPad cancellation in November 2025. The whitepaper is the documentary source for the full-refund statement; this portfolio has not reproduced a participant-by-participant ETH refund transaction ledger.
+SickB explored fundraising in 2025. Both proposed presales were discontinued, and neither should be described as an active offering or counted as current project financing.
 
-The whitepaper also records **1,484,000,000 SICKB burned through November 27, 2025**, or **59.36% of the original 2,500,000,000 SICKB supply**, leaving approximately 1,016,000,000 after those burns. These are historical Ethereum-era token supply figures, not a new burn event or a claim about current circulating or bridged balances. The whitepaper describes sending tokens to a dead address. Such transfers remove tokens from practical circulation but do not automatically change an ERC-20 contract's `totalSupply()`; the precise supply semantics must be checked against the token implementation.
+Contemporaneous community records include Joshua's June 18, 2025 announcement cancelling PinkSale (archive message #49084) and a participant's confirmation of a refund (#49098). On November 26, 2025, Joshua announced the GemPad cancellation and directed participants to the sale page for refunds (#55794). These records document cancellation and refund activity. A complete transaction-level ledger showing the amount of ETH returned to **every** participant in both sales has not yet been independently assembled; the project does not claim such reconciliation here.
 
-| Whitepaper record | Amount | Date or period | Published transaction reference |
-| --- | ---: | --- | --- |
-| First Ethereum-era burn | 250,000,000 SICKB | September 18, 2025 | [Etherscan transaction](https://etherscan.io/tx/0x7a5804d93228b35b1cffce9fb4ad604098a6d353df02aeed3fbaadea580c05a5) |
-| Second Ethereum-era burn | 250,000,000 SICKB | September 26, 2025 | [Etherscan transaction](https://etherscan.io/tx/0x979bb2872bff835da758ce123bb3e1affc15c4face3d8768bd1cd9b4a0a597fd) |
-| Additional burns | 250,000,000 SICKB total | Through October 2025 | Aggregated in whitepaper; exact matching transaction references not yet indexed here |
-| November milestone burn | 734,000,000 SICKB | November 27, 2025 | [Etherscan transaction](https://etherscan.io/tx/0xfdb8b44d6e1600634e01fcd38f1a6a0d17d93900ab630870b39d1d6bfebaaca7) |
-| **Whitepaper total** | **1,484,000,000 SICKB** | Through November 2025 | **59.36% of the original supply** |
+There were token burns on the original Pepe Unchained deployment and later on Ethereum. These must be counted separately, using the contract address and chain for each event. The archived September 18 and September 26, 2025 announcements describe two Ethereum-era burns of **250 million SICKB each** (archive messages #53877, #53882 and #54117). A subsequent founder record reports a larger cumulative burn, but its complete transaction breakdown still requires an Ethereum ERC-20 transfer-event audit. The [evidence backlog](../evidence/verification-gaps.md) records the proposed aggregate and the exact verification needed; it is not presented here as an independently verified current supply figure.
 
-For the November 27 transaction, the whitepaper records Ethereum block **23,887,026**, timestamp **02:18:23 UTC**, and 734 million SICKB sent to `0xdEad000000000000000000000000000000000000`. The transaction URLs above come from the whitepaper; while public links are provided, the full 1.484 billion transaction-level reconciliation has not been rerun independently for this review.
+The Ethereum token contract is [SICKB on chain 1](https://etherscan.io/token/0x8172e2Ff7009483ff98c24Bd639C8078caCED9a3). Transfers to an inaccessible address may reduce practical circulation without reducing the ERC-20 contract's reported `totalSupply()`. A published burn count needs the matching contract, destination, transaction hashes, logs and accounting convention.
 
-Earlier burns of the original Pepe Unchained-era SICKB token, including a February 2025 announcement involving 154,344,445 tokens, are a **different chain and token era**. They are not added to the Ethereum-era 1.484 billion figure.
-
-The founder continued personally financing infrastructure and development. Token market capitalization was not cash raised by the project, and burned supply is not a measure of operating expenditure.
+Joshua continued paying for development and infrastructure personally. Neither token market capitalization nor a cancelled presale is a measure of capital committed to SickB Digital LLC.
 
 ## December 2025: the lost phone and the later Vault design
 
-During a trip to Thailand in December 2025, Joshua Spoehr lost a phone holding wallet access. The [historical whitepaper, Chapter 13](https://sickb.io/whitepaper.pdf) describes **25 million personally purchased SICKB** becoming inaccessible along with approximately **165 million additional SICKB in operational and development wallets** affected during that period. The document describes roughly **190 million tokens** in total as inaccessible.
+During travel in December 2025, Joshua lost a phone containing important authentication and wallet access. In his own subsequently archived community messages, he described wallets without recoverable backups and the practical difficulty of replacing an unavailable two-factor-authentication device (founder archive references #56408 and #61334). Any precise value of inaccessible tokens should be verified against wallet records before publication.
 
-This is the founder's historical account of lost keys, **not an onchain burn**. Inaccessibility cannot be treated as independently proved permanent merely from a lack of later transfers, and the 190 million is not added to the 1.484 billion confirmed-burn narrative.
-
-The experience was a direct design lesson for SickB Vault: losing a device should not automatically mean losing control of the asset-holding contract. Vault architecture separates **device authorization for specific supported actions** from **ownership and recovery authority held by the original wallet**. An owner who still controls the wallet can remove or replace a lost device's authorization without giving SickB custody of the wallet keys. This does not recreate a lost owner private key or eliminate the need for secure wallet backup. The deployed Vault design is described in [architecture and products](architecture-products.md).
+That experience informed the later SickB Vault design. **A registered device can authorize specific supported operations without becoming the owner of the Vault's assets.** The original owner wallet retains contract ownership and the authority to remove a lost device or authorize another. This separation makes device replacement possible when the owner wallet remains accessible; it cannot restore an unrecoverable owner's signing keys. See [Vault architecture](architecture-products.md).
 
 ## Building SickB Chain
 
@@ -70,21 +60,19 @@ On May 29, 2026, the founder wrote a dedication to the community. It was deploye
 
 The [complete original dedication, message hash and receipt](../evidence/genesis-block-10.md) are preserved verbatim. That immutable text should not be modernized to suit an application or marketing document.
 
-## Historical whitepaper
+## Current official engineering reference
 
-The [SickB technical whitepaper v2.0](https://sickb.io/whitepaper.pdf) is a historical source for the ambitions, architecture and thinking of the project at the time of publication. It is valuable even when individual proposals changed.
-
-It is not an authoritative list of deployed contracts or features today. For current status, use [architecture and products](architecture-products.md), [developer onboarding](developer-start.md) and the [evidence index](../evidence/INDEX.md). Whitepaper versions and specific historical claims should be checked against dated primary sources before being promoted as current functionality.
+This public repository is the **current official SickB engineering documentation and technical reference** maintained for SickB Digital LLC. Its [architecture](architecture-products.md), [developer configuration](developer-start.md), and [evidence index](../evidence/INDEX.md) distinguish deployed functionality from founder history and proposals. Older project ideas are not substitutes for current contract state or transaction evidence.
 
 ## Original long-term vision
 
-The whitepaper described Sick Buffalo as more than a chain and token. Its longer-term ambition included a **Sick Buffalo DAO**, specialized **subDAOs**, community-run node and validator participation, entertainment and gaming, integration of **real-world assets (RWAs)**, and a physical **Sick Buffalo Bar** where community members could meet.
+Founder and community discussions in 2025 described a **Sick Buffalo DAO**, specialized **subDAOs**, broader community node and validator participation, entertainment and gaming, possible **real-world asset (RWA)** projects, and a physical **Sick Buffalo Bar** in Pattaya. The founder's archived April and June 2025 messages and earlier governance experiments document these ideas independently of later narrative summaries. In particular, the Sick Buffalo Bar was discussed by the founder during the April-to-May migration, and community participation in infrastructure and RWAs appeared in June and August development discussions.
 
-These ideas explain why the ecosystem developed governance, Social, trading and launch infrastructure. The bar, revenue-producing property arrangements, community validator program and proposed asset-backed subDAO structures are **historical ambitions**, not businesses, decentralization milestones, profit distributions or technical deployments being claimed as live here. Reprinting them does not create new release dates, spending commitments or a revised technical roadmap.
+These remain **historical ambitions**. A public governance repository or prototype is not evidence that the corresponding DAO, validator program, real-world asset ownership, entertainment venue or physical bar has been deployed. Nothing in this record adds development commitments or launch dates.
 
 ## How the project was developed
 
-Joshua Spoehr is **Founder, Systems Architect, Developer and Infrastructure Operator**.
+Joshua Spoehr is **Owner and Founder of SickB Digital LLC, Systems Architect, Developer and Infrastructure Operator**.
 
 AI-assisted engineering has been part of the work since GPT-4. Subsequent AI tools have supported investigation, implementation, test design, documentation and review. They are tools within an owner-directed engineering workflow, not substitutes for onchain receipts, observed service behavior or the founder's responsibility for production systems.
 
