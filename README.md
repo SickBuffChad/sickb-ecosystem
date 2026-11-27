@@ -2,15 +2,15 @@
 
 Sick Buffalo began as a community token in January 2025. It now operates SickB Chain, a live Arbitrum Orbit AnyTrust Layer 3 on Arbitrum One, with an Ethereum asset bridge and applications built around trading, launch infrastructure, Social and smart-contract Vaults.
 
-This is the public engineering portfolio for [SickB Digital LLC](https://sickb.io). It explains what has been built, how the systems relate, what has been tested and where evidence or outside review is still needed. It is not the private production source repository.
+This repository is the **current official engineering documentation and public technical reference** for [SickB Digital LLC](https://sickb.io). It describes the deployed systems, integration boundaries, historical records and supporting evidence. Production application source and privileged operational materials remain private.
 
-Project lead: **Joshua Spoehr, Founder, Systems Architect, Developer and Infrastructure Operator**. SickB has been self-funded and developed with AI assistance beginning with GPT-4, under Joshua's direction and testing. His GitHub contribution activity was reported as **2,561 contributions for the preceding year on November 25, 2026**. This is a founder-provided GitHub activity figure, not a commit count or a count of deployed changes. Ethereum, Arbitrum and Offchain Labs provided the technology on which SickB Chain was built.
+Project lead: **Joshua Spoehr, Owner and Founder of SickB Digital LLC, Systems Architect, Developer and Infrastructure Operator**. SickB has been self-funded and developed with AI assistance beginning with GPT-4, under Joshua's direction and testing. His GitHub contribution activity was reported as **2,561 contributions for the preceding year on November 25, 2026**. This is a founder-provided GitHub activity figure, not a commit count or a count of deployed changes. Ethereum, Arbitrum and Offchain Labs provided the technology on which SickB Chain was built.
 
 ## Start here: five areas
 
 | Area | First document | What you will find |
 | --- | --- | --- |
-| 1. History and founding story | [Our history](docs/history.md) | Sick Buffalo's origins, voluntary Pepe Unchained migration, trust and refunds, burns, founding dedication and the historical whitepaper |
+| 1. History and founding story | [Our history](docs/history.md) | Sick Buffalo's origins, voluntary migration, original founder records, reported refunds and burns, and the founding dedication |
 | 2. Architecture and deployed products | [Architecture and products](docs/architecture-products.md) | Orbit topology, self-operated nodes, Baht Bus, DEX, Vault, Social, Android and ChadBot |
 | 3. Developer onboarding and integration | [Developer start](docs/developer-start.md) | Chain settings, public RPC, contract addresses, gas sponsorship, read-only checks and integration boundaries |
 | 4. Verifiable engineering evidence | [Evidence index](evidence/INDEX.md) | Genesis receipt, matched L1/L3 transfers, mobile debugging, proof gaps and reserve-reconciliation method |
@@ -53,17 +53,19 @@ The architecture uses a single-operator sequencer and committee-based data avail
 
 ## History worth preserving
 
-When the original Pepe Unchained infrastructure changed in 2025, SickB holders voluntarily entrusted legacy tokens to Joshua for a manually verified 1:1 Ethereum migration. Every verified distribution was honored according to the project history. The [historical whitepaper](https://sickb.io/whitepaper.pdf) records **full ETH refunds for all PinkSale and GemPad presale participants** after both offerings were discontinued. It also documents **1.484 billion Ethereum-era SICKB burned through November 2025, 59.36% of the original 2.5 billion supply**, with several transaction hashes listed in the [history](docs/history.md). These are historical project records; the complete transaction-level reconciliation has not been independently repeated for this portfolio.
+When Pepe Unchained's infrastructure changed in 2025, SickB holders voluntarily entrusted legacy tokens to Joshua for a manually checked 1:1 Ethereum migration. Founder announcements and a participant's receipt confirmation are preserved in the project archive. The complete wallet-by-wallet reconciliation is still an evidence task.
+
+PinkSale and GemPad were discontinued. The original community record includes a PinkSale refund acknowledgement and instructions for GemPad participants to obtain refunds; confirming the full ETH returned to all participants requires the underlying sale and refund transactions. September 2025 founder announcements also describe two 250-million-SICKB Ethereum-era burns. The larger historical burn total remains subject to complete ERC-20 event reconstruction rather than being presented as verified supply.
 
 The chain's first deliberate application transaction, on June 3, 2026 in mainnet block 10, preserved a message written to the community on May 29:
 
 > The blocks can drop, and the goal can be reached.
 
-The [full dedication and chain-specific receipt](evidence/genesis-block-10.md) are preserved without editorial changes.
+The [full dedication and chain-specific receipt](evidence/genesis-block-10.md) remain unchanged.
 
-In December 2025, Joshua lost a phone containing wallet access. That experience helped shape the later Vault principle: **a device may authorize specific actions, while ownership of the assets remains with the original wallet**. Losing the wallet's own recovery keys is a separate risk. [Read the full account](docs/history.md#december-2025-the-lost-phone-and-the-later-vault-design).
+In December 2025, Joshua lost a phone containing wallet and authentication access. That experience helped shape the later Vault principle: a device may authorize a specific action while ownership of the assets remains with the original owner wallet. The project's early discussions also proposed DAO governance, subDAOs, community infrastructure participation, entertainment, RWA projects and a Sick Buffalo Bar. Those are historical ideas, not claims of deployed functionality or new commitments.
 
-The [historical technical whitepaper v2.0](https://sickb.io/whitepaper.pdf) also outlines the **Sick Buffalo DAO, subDAOs, community node and validator participation, entertainment, RWA integration, and Sick Buffalo Bar** as long-term ambitions. These are not being presented as shipped products or new commitments. [Read the history and original vision](docs/history.md#original-long-term-vision).
+Read the [founding history](docs/history.md), the [original-record provenance register](evidence/historical-provenance.md), and the [verification backlog](evidence/verification-gaps.md).
 
 ## Engineering evidence you can inspect
 
