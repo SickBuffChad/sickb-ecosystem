@@ -1,6 +1,6 @@
 # Developer start: SickB mainnet
 
-This guide is for developers evaluating SickB Chain or planning a documented integration. No private repository, infrastructure access, paid RPC key or operator credentials are required to inspect public blockchain state.
+This is part of SickB Digital LLC's current official engineering documentation and public technical reference. It is for developers evaluating SickB Chain or planning a documented integration. No private repository, infrastructure access, paid RPC key or operator credentials are required to inspect public blockchain state.
 
 ## Network configuration
 
